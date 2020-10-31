@@ -24,6 +24,7 @@ namespace Color_Switch_Game
         int speed = 5;
         int score = 0;
         bool gameOver = false;
+        int difficulty = 1;
         
 public Form1()
         {
@@ -41,6 +42,17 @@ public Form1()
 
         private void playGame(object sender, EventArgs e)
         {
+            if (speedComboBox.Text.Equals("Slow")) {
+                difficulty = 1;
+                speed = 5;
+            }
+            else if (speedComboBox.Text.Equals("Medium")) {
+                difficulty = 2;
+                speed = 7;
+            }
+            else if (speedComboBox.Text.Equals("Fast")) {
+                difficulty = 9;
+            }
 
             block1.Top += speed; 
             block2.Top += speed; 
@@ -88,14 +100,34 @@ public Form1()
                 }
             }
 
-            if (score > 5)
+            if (score > 5 && difficulty == 1)
             {
                 speed = 6;
             }
 
-            if (score > 10)
+            if (score > 10 && difficulty == 1)
             {
                 speed = 8;
+            }
+
+            if (score > 5 && difficulty == 2)
+            {
+                speed = 8;
+            }
+
+            if (score > 10 && difficulty == 2)
+            {
+                speed = 10;
+            }
+
+            if (score > 5 && difficulty == 3)
+            {
+                speed = 10;
+            }
+
+            if (score > 10 && difficulty == 3)
+            {
+                speed = 12;
             }
 
             block1.Refresh();

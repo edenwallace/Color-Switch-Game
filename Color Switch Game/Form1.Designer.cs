@@ -138,6 +138,10 @@ namespace Color_Switch_Game
             // speedComboBox
             // 
             this.speedComboBox.FormattingEnabled = true;
+            this.speedComboBox.Items.AddRange(new object[] {
+            "Slow",
+            "Medium",
+            "Fast"});
             this.speedComboBox.Location = new System.Drawing.Point(625, 77);
             this.speedComboBox.Name = "speedComboBox";
             this.speedComboBox.Size = new System.Drawing.Size(121, 21);
