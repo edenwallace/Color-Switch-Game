@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Diagnostics;
+using Color_Switch_Game.Properties;
 
 namespace Color_Switch_Game
 {
@@ -21,11 +24,16 @@ namespace Color_Switch_Game
         int speed = 5;
         int score = 0;
         bool gameOver = false;
-
-        public Form1()
+        
+public Form1()
         {
-            this.KeyPreview = true;
+
+            this.KeyPreview = true; 
             InitializeComponent();
+
+            playerComboBox.Items.AddRange(Resources.names.Split(new[] { Environment.NewLine }, StringSplitOptions.None));
+            scoreList.Items.AddRange(Resources.scores.Split(new[] { Environment.NewLine }, StringSplitOptions.None));
+
             resetGame();
             gameTimer.Stop();
 
@@ -33,6 +41,7 @@ namespace Color_Switch_Game
 
         private void playGame(object sender, EventArgs e)
         {
+
             block1.Top += speed; 
             block2.Top += speed; 
             label1.Text = "Score " + score;
@@ -61,7 +70,8 @@ namespace Color_Switch_Game
             {
                 if (player.BackColor != block1.BackColor)
                 {
-                    scoreList.Items.Add("Scored: " + score + " @" + string.Format(" {0:HH:mm:ss tt}", DateTime.Now));
+                    //scoreList.Items.Add("" + score + " @" + string.Format(" {0:HH:mm:ss tt}", DateTime.Now));
+                    scoreList.Items.Add("" + score + " - " + playerComboBox.Text);
                     gameTimer.Stop(); 
                     gameOver = true; 
                 }
@@ -71,7 +81,8 @@ namespace Color_Switch_Game
             {
                 if (player.BackColor != block2.BackColor)
                 {
-                    scoreList.Items.Add("Scored: " + score + " @" + string.Format(" {0:HH:mm:ss tt}", DateTime.Now));
+                    //scoreList.Items.Add("Scored: " + score + " @" + string.Format(" {0:HH:mm:ss tt}", DateTime.Now));
+                    scoreList.Items.Add("" + score + " - " + playerComboBox.Text);
                     gameTimer.Stop(); 
                     gameOver = true;
                 }
@@ -93,6 +104,7 @@ namespace Color_Switch_Game
 
         private void KeyisDown(object sender, KeyPressEventArgs e)
         {
+
             if (e.KeyChar == (char)Keys.Space)
             {
                 i++; 
@@ -112,6 +124,7 @@ namespace Color_Switch_Game
 
         public void resetGame()
         {
+            
             block1.Top = -80;
             block2.Top = -300;
 
@@ -123,18 +136,26 @@ namespace Color_Switch_Game
             score = 0; 
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-
-         
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             resetGame();
-             
+            panel1.Select();
+        }
+
+        private void scoreList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void speedComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void playerComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            
         }
     }
 

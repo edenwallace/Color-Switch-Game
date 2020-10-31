@@ -1,4 +1,6 @@
-﻿namespace Color_Switch_Game
+﻿using System.Windows.Forms;
+
+namespace Color_Switch_Game
 {
     partial class Form1
     {
@@ -30,18 +32,20 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.block2 = new System.Windows.Forms.PictureBox();
-            this.player = new System.Windows.Forms.PictureBox();
             this.block1 = new System.Windows.Forms.PictureBox();
+            this.player = new System.Windows.Forms.PictureBox();
+            this.block2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.scoreList = new System.Windows.Forms.ListBox();
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
+            this.playerComboBox = new System.Windows.Forms.ComboBox();
+            this.speedComboBox = new System.Windows.Forms.ComboBox();
+            this.button1 = new Color_Switch_Game.NonFocusButton();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.block2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.block1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.block2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -55,14 +59,14 @@
             this.panel1.Size = new System.Drawing.Size(481, 550);
             this.panel1.TabIndex = 0;
             // 
-            // block2
+            // block1
             // 
-            this.block2.BackColor = System.Drawing.Color.Red;
-            this.block2.Location = new System.Drawing.Point(-12, 36);
-            this.block2.Name = "block2";
-            this.block2.Size = new System.Drawing.Size(518, 30);
-            this.block2.TabIndex = 0;
-            this.block2.TabStop = false;
+            this.block1.BackColor = System.Drawing.Color.Red;
+            this.block1.Location = new System.Drawing.Point(-12, 240);
+            this.block1.Name = "block1";
+            this.block1.Size = new System.Drawing.Size(589, 25);
+            this.block1.TabIndex = 2;
+            this.block1.TabStop = false;
             // 
             // player
             // 
@@ -73,20 +77,20 @@
             this.player.TabIndex = 1;
             this.player.TabStop = false;
             // 
-            // block1
+            // block2
             // 
-            this.block1.BackColor = System.Drawing.Color.Red;
-            this.block1.Location = new System.Drawing.Point(-12, 240);
-            this.block1.Name = "block1";
-            this.block1.Size = new System.Drawing.Size(589, 25);
-            this.block1.TabIndex = 2;
-            this.block1.TabStop = false;
+            this.block2.BackColor = System.Drawing.Color.Red;
+            this.block2.Location = new System.Drawing.Point(-12, 36);
+            this.block2.Name = "block2";
+            this.block2.Size = new System.Drawing.Size(518, 30);
+            this.block2.TabIndex = 0;
+            this.block2.TabStop = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(488, 35);
+            this.label1.Location = new System.Drawing.Point(487, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(107, 25);
             this.label1.TabIndex = 3;
@@ -109,10 +113,11 @@
             this.scoreList.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.scoreList.FormattingEnabled = true;
             this.scoreList.ItemHeight = 18;
-            this.scoreList.Location = new System.Drawing.Point(493, 80);
+            this.scoreList.Location = new System.Drawing.Point(495, 183);
             this.scoreList.Name = "scoreList";
-            this.scoreList.Size = new System.Drawing.Size(251, 364);
+            this.scoreList.Size = new System.Drawing.Size(194, 310);
             this.scoreList.TabIndex = 4;
+            this.scoreList.SelectedIndexChanged += new System.EventHandler(this.scoreList_SelectedIndexChanged);
             // 
             // gameTimer
             // 
@@ -120,11 +125,32 @@
             this.gameTimer.Interval = 20;
             this.gameTimer.Tick += new System.EventHandler(this.playGame);
             // 
+            // playerComboBox
+            // 
+            this.playerComboBox.FormattingEnabled = true;
+            this.playerComboBox.Location = new System.Drawing.Point(492, 77);
+            this.playerComboBox.Name = "playerComboBox";
+            this.playerComboBox.Size = new System.Drawing.Size(121, 21);
+            this.playerComboBox.TabIndex = 6;
+            this.playerComboBox.Text = "Player";
+            this.playerComboBox.SelectedIndexChanged += new System.EventHandler(this.playerComboBox_SelectedIndexChanged);
+            // 
+            // speedComboBox
+            // 
+            this.speedComboBox.FormattingEnabled = true;
+            this.speedComboBox.Location = new System.Drawing.Point(625, 77);
+            this.speedComboBox.Name = "speedComboBox";
+            this.speedComboBox.Size = new System.Drawing.Size(121, 21);
+            this.speedComboBox.TabIndex = 7;
+            this.speedComboBox.Text = "Speed";
+            this.speedComboBox.SelectedIndexChanged += new System.EventHandler(this.speedComboBox_SelectedIndexChanged);
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(648, 35);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(570, 123);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(102, 37);
             this.button1.TabIndex = 5;
             this.button1.Text = "Start Playing ";
             this.button1.UseVisualStyleBackColor = true;
@@ -135,6 +161,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(758, 556);
+            this.Controls.Add(this.speedComboBox);
+            this.Controls.Add(this.playerComboBox);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.scoreList);
             this.Controls.Add(this.label1);
@@ -144,9 +172,9 @@
             this.Text = "Color Switch";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyisDown);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.block2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.player)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.block1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.player)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.block2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,7 +190,17 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox scoreList;
         private System.Windows.Forms.Timer gameTimer;
-        private System.Windows.Forms.Button button1;
+        private NonFocusButton button1;
+        private ComboBox playerComboBox;
+        private ComboBox speedComboBox;
+    }
+
+    public class NonFocusButton : Button
+    {
+        public NonFocusButton()
+        {
+            SetStyle(ControlStyles.Selectable, false);
+        }
     }
 }
 
