@@ -105,9 +105,10 @@ namespace Color_Switch_Game
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(541, 496);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(173, 26);
+            this.label2.Size = new System.Drawing.Size(197, 39);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Press Space to Change Color\r\n    Press R to Reset Game";
+            this.label2.Text = "  Press Space to Change Color\r\nOr R / W / Y / P to Select Colors\r\n       Press R " +
+    "to Reset Game";
             this.label2.UseMnemonic = false;
             // 
             // scoreList
