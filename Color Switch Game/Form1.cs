@@ -42,15 +42,15 @@ public Form1()
 
         private void playGame(object sender, EventArgs e)
         {
-            if (speedComboBox.Text.Equals("Slow")) {
+            if (speedComboBox.Text.Contains("Slow")) {
                 difficulty = 1;
                 speed = 5;
             }
-            else if (speedComboBox.Text.Equals("Medium")) {
+            else if (speedComboBox.Text.Contains("Medium")) {
                 difficulty = 2;
                 speed = 7;
             }
-            else if (speedComboBox.Text.Equals("Fast")) {
+            else if (speedComboBox.Text.Contains("Fast")) {
                 difficulty = 9;
             }
 
@@ -147,10 +147,26 @@ public Form1()
                 }
                 player.BackColor = colors[i];
             }
-            if (e.KeyChar == (char)Keys.R || e.KeyChar == char.ToLower((char)Keys.R) && gameOver)
+            if ((e.KeyChar == (char)Keys.R || e.KeyChar == char.ToLower((char)Keys.R)) && gameOver)
             {
                 resetGame();
                 gameOver = false; 
+            }
+            if (e.KeyChar == (char)Keys.R || e.KeyChar == char.ToLower((char)Keys.R))
+            {
+                player.BackColor = colors[0];
+            }
+            if (e.KeyChar == (char)Keys.Y || e.KeyChar == char.ToLower((char)Keys.Y))
+            {
+                player.BackColor = colors[1];
+            }
+            if (e.KeyChar == (char)Keys.W || e.KeyChar == char.ToLower((char)Keys.W))
+            {
+                player.BackColor = colors[2];
+            }
+            if (e.KeyChar == (char)Keys.P || e.KeyChar == char.ToLower((char)Keys.P))
+            {
+                player.BackColor = colors[3];
             }
         }
 
@@ -188,6 +204,21 @@ public Form1()
         {
             
             
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            gameTimer.Stop();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            gameTimer.Start();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Close(); 
         }
     }
 
